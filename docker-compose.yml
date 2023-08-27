@@ -1,0 +1,19 @@
+# Create postgres 18 service
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5433:5432
+    volumes:
+      - ./docker-compose/postgresql/data:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+# Create postgres network
+networks:
+  postgres:
+    driver: bridge
